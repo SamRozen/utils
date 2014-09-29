@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# nuke a branch
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $(basename $0) branch [remote]"
+    exit 1
+fi
+
+remote="origin"
+if [ $# -eq 2 ]; then
+    remote=$2
+fi
+
+git branch -D $1
+git branch -D -r ${remote}/$1
+git push ${remote} :$1
