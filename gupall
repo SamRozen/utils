@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+ROOT=`pwd`
+DIRS=`find . -d 1 -type d`
+
+for d in $DIRS
+do
+  cd $ROOT
+  cd $d
+  echo $d
+  git pull --rebase
+  echo
+done
